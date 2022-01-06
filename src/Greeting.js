@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './Greeting.sass'
 
 const THINGS_I_DO = [
-    "build full stack web applications.",
+    "build full stack web apps.",
     "love Vim.",
     "love hashmaps.",
     "love linked lists.",
@@ -16,7 +16,7 @@ export default function Greeting() {
     const subTextRef = useRef(subText)
     const decrementInterval = useRef(null)
     const incrementInterval = useRef(null)
-    const SUBTEXT_DISPLAY_TIME = 1200
+    const SUBTEXT_DISPLAY_TIME = 1300
     const seen_greetings = useRef(new Set([0]))
 
     function setRandomSubText() {
