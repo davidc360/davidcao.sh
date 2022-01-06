@@ -9,7 +9,7 @@ export default function () {
                 I am a senior at
                 <strong> Dominican University of California </strong>
                 with an expected graduation date of May 2022.
-                I'm currently studying Applied Computer Science with a strong focus on
+                I'm studying Applied Computer Science with a strong focus on
                 <strong> Data Structures & Algorithms </strong>
                 and <strong> Backend Web Development</strong>
                 .
