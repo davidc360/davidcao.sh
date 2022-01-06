@@ -16,21 +16,28 @@ export default function Greeting() {
     const subTextRef = useRef(subText)
     const decrementInterval = useRef(null)
     const incrementInterval = useRef(null)
-    const SUBTEXT_DISPLAY_TIME = 1500
+    const SUBTEXT_DISPLAY_TIME = 1200
+    const seen_greetings = useRef(new Set([0]))
 
     function setRandomSubText() {
         let randomChoice = Math.floor(Math.random() * THINGS_I_DO.length)
         // ensure we don't get the same thing twice in a row
-        while (randomChoice == subTextChoice) {
+        while (randomChoice == subTextChoice || seen_greetings.current.has(randomChoice)) {
             randomChoice = Math.floor(Math.random() * THINGS_I_DO.length)
         }
         setSubtextChoice(randomChoice)
+        if (seen_greetings.current.size == THINGS_I_DO.length - 1) {
+            seen_greetings.current = new Set([randomChoice])
+        } else {
+            seen_greetings.current.add(randomChoice)
+        }
     }
 
     function decrementSubText() {
         // if text became empty
         if (subTextRef.current.length === 0) {
-            setTimeout(setRandomSubText, 50)
+            clearInterval(decrementInterval.current)
+            setTimeout(setRandomSubText, 200)
         } else {
             // else decrement text
             setSubText(text => {
@@ -60,22 +67,19 @@ export default function Greeting() {
 
     function startDecrement() {
         clearInterval(decrementInterval.current)
-        decrementInterval.current = setInterval(decrementSubText, Math.min(2000/subTextRef.current.length, 70))
+        decrementInterval.current = setInterval(decrementSubText, Math.min(1100/subTextRef.current.length, 70))
     }
 
     function startIncrement() {
         clearInterval(incrementInterval.current)
-        incrementInterval.current = setInterval(incrementSubText, Math.min(2000/THINGS_I_DO[subTextChoice].length, 50))
+        incrementInterval.current = setInterval(incrementSubText, Math.min(1100/THINGS_I_DO[subTextChoice].length, 50))
     }
-
-    useEffect(() => {
-
-    }, [])
 
     useEffect(() => {
         // stop decrementing and start incrementing
         clearInterval(decrementInterval.current)
         startIncrement()
+        console.log(seen_greetings.current)
     }, [subTextChoice])
 
 
