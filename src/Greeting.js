@@ -80,7 +80,6 @@ export default function Greeting() {
         // stop decrementing and start incrementing
         clearInterval(decrementInterval.current)
         startIncrement()
-        console.log(seen_greetings.current)
     }, [subTextChoice])
 
 
