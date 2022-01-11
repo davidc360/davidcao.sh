@@ -1,19 +1,24 @@
 .greetingCtn
-    padding-top: 10vh
+    padding-top: 1.5em
+    padding-bottom: 0.5em
+    padding-left: 0
+    padding-right: 0
     text-align: center
+    @media only screen and (max-width: 600px)
+        font-size: 2.5em
 
-.introText, .subText, .subCtn
-    font-size: 3rem
+    @media only screen and (min-width: 601px)
+        font-size: 3rem
 
 .subCtn
     text-align: left
-    padding-left: 2em
-    white-space: nowrap
+    height: 2em
 
 .subText
     padding-right: 1px
     border-right: 3px solid black
     animation: blink 1s step-end infinite
+    text-decoration: underline
 
 @keyframes blink
     0%

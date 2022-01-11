@@ -3,11 +3,12 @@ import './Greeting.sass'
 
 const THINGS_I_DO = [
     "build full stack web apps.",
-    "love Vim.",
+    "love writing code with Vim.",
     "love hashmaps.",
     "love linked lists.",
     "love binary trees.",
     "build sites with React.",
+    "love Redux.",
 ]
 
 export default function Greeting() {
@@ -16,7 +17,7 @@ export default function Greeting() {
     const subTextRef = useRef(subText)
     const decrementInterval = useRef(null)
     const incrementInterval = useRef(null)
-    const SUBTEXT_DISPLAY_TIME = 1300
+    const SUBTEXT_DISPLAY_TIME = Math.max(THINGS_I_DO[subTextChoice].length * 50, 1100)
     const seen_greetings = useRef(new Set([0]))
 
     function setRandomSubText() {
@@ -88,7 +89,7 @@ export default function Greeting() {
             <div className="introText">Hello, I'm David Cao.</div>
             <div className="subCtn">
                 <span>I </span>  
-                <u><span className="subText">{subText}</span></u>
+                <span className="subText">{subText}</span>
             </div>
         </div>
     )
