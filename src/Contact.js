@@ -6,9 +6,23 @@ init('user_REUMllQclwmLqErmaHbkL')
 export default function () {
     const [sent, setSent] = useState(false)
     const [success, setSuccess] = useState(null)
+    const [errorMessage, setErrorMessage] = useState("")
 
     function sendEmail() {
-        if (document.getElementById("messageArea").value === "") {
+        const messageArea = document.getElementById("messageArea")
+        const nameInput = document.getElementById("nameInput")
+        const emailInput = document.getElementById("emailInput")
+        if (messageArea.value === "") {
+            setErrorMessage("Please enter a message.")
+            messageArea.focus()
+            return
+        } else if (nameInput.value === "") {
+            setErrorMessage("Please enter your name.")
+            nameInput.focus()
+            return
+        } else if (emailInput.value === "") {
+            setErrorMessage("Please enter your email.")
+            emailInput.focus()
             return
         }
         setSent(true)
@@ -28,15 +42,16 @@ export default function () {
                 <textarea className='contact-text-area border' id="messageArea" placeholder="Message here" name="message"></textarea>
                 <br/>
             </div>
-            <div>
+            <div className="contact-right">
                 <div>
                     <label>Name: </label>
-                    <input type="text" name="user_name" className="border"/>
+                    <input type="text" id="nameInput" name="user_name" className="border"/>
                 </div>
                 <div>
                     <label>Email: </label>
-                    <input type="email" name="user_email" className="border"/>
+                    <input type="email" id="emailInput" name="user_email" className="border"/>
                 </div>
+                <div>{errorMessage}</div>
                 <div className='submit' onClick={sendEmail}>
                     Submit
                 </div>
@@ -47,10 +62,10 @@ export default function () {
     return (
         <div className="contactCtn">
             <div className="heading">~/Contact</div> 
-            <div className='contact'>            
-                <div>
-                        Get in touch with me! Send a message below.
-                </div>
+            <div className="contactPrompt">
+                    Get in touch with me! Send a message below.
+            </div>
+            <div className='contactForm'>            
                 <br/>
                 {sent ? 
                     success === true ? (

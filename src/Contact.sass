@@ -1,6 +1,12 @@
 .contactCtn
     width: 100%
 
+.contact-right
+    margin-left: 2em
+
+    > div
+        margin-bottom: 0.5em
+
 #contact-form
     display: flex
 
@@ -13,14 +19,17 @@
 
     &:hover
         cursor: pointer
-        box-shadow: 0 0 0 4px black
+        box-shadow: 0 0 0 3px black
 
     &:active
         background-color: lightgray
-        box-shadow: 0 0 0 4px #4b95eb
+        box-shadow: 0 0 0 3px #4b95eb
+
+.contactForm, .contactPrompt
+    margin-top: 1em
 
 #messageArea
-    height: 5em
+    height: 7em
 
 .border
     border: solid 2px black
