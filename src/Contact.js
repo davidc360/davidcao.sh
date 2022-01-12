@@ -3,6 +3,15 @@ import './Contact.sass'
 import emailjs, { init } from 'emailjs-com'
 init('user_REUMllQclwmLqErmaHbkL')
 
+function validateEmail (emailAdress) {
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (emailAdress.match(regexEmail)) {
+    return true; 
+  } else {
+    return false; 
+  }
+}
+
 export default function () {
     const [sent, setSent] = useState(false)
     const [success, setSuccess] = useState(null)
@@ -24,16 +33,20 @@ export default function () {
             setErrorMessage("Please enter your email.")
             emailInput.focus()
             return
+        } else if (!validateEmail(emailInput.value)) {
+            setErrorMessage("Please enter a valid email.")
+            emailInput.focus()
+            return
         }
         setSent(true)
-        // emailjs.sendForm("service_3dajah7","template_vtw03dc", '#contact-form')
-        //     .then(function(response) {
-        //         setSuccess(true)
-        //         console.log('SUCCESS!', response.status, response.text);
-        //     }, function(err) {
-        //         setSuccess(false)
-        //         console.log('FAILED...', err);
-        //     })
+        emailjs.sendForm("service_3dajah7","template_vtw03dc", '#contact-form')
+            .then(function(response) {
+                setSuccess(true)
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(err) {
+                setSuccess(false)
+                console.log('FAILED...', err);
+            })
     }
 
     const form = (
