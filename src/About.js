@@ -8,8 +8,8 @@ export default function () {
             <p className="aboutText">
                 I am a senior at
                 <strong> Dominican University of California </strong>
-                (c/o May 2022).
-                I'm studying Applied Computer Science with a strong focus in
+                (c/o May 2022)
+                studying Applied Computer Science with a strong focus in
                 <strong> Data Structures & Algorithms </strong>
                 and <strong> Backend Web Development</strong>
                 .
