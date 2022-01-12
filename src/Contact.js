@@ -63,8 +63,9 @@ export default function () {
         <div className="contactCtn">
             <div className="heading">~/Contact</div> 
             <div className="contactPrompt">
-                    Get in touch with me! Send a message below.
-            </div>
+                Get in touch with me!
+                <br />
+                Send a message below or email me at <a href="mailto:david@davidcao.sh">david@davidcao.sh</a> </div>
             <div className='contactForm'>            
                 <br/>
                 {sent ? 
