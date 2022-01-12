@@ -79,7 +79,7 @@ export default function () {
                 Get in touch with me!
                 <br />
                 Send a message below or email me at <a href="mailto:david@davidcao.sh">david@davidcao.sh</a> </div>
-            <div className='contactForm'>            
+            <div className='contactFormCtn'>            
                 <br/>
                 {sent ? 
                     success === true ? (
