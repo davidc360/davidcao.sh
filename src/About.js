@@ -5,7 +5,7 @@ export default function () {
     return (
         <div className="aboutCtn">
             <div className="heading">~/About</div> 
-            <p>
+            <p className="aboutText">
                 I am a senior at
                 <strong> Dominican University of California </strong>
                 (c/o May 2022).
