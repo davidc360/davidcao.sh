@@ -42,28 +42,25 @@ export default function Projects() {
         <div className="projectsCtn">
             <div className="heading">~/Projects/</div>
             <div className="filterCtn">
-                <div className="filter">
-                    <span style={{ color: "gray" }}>Filter:</span>
-                    <ul className="filterOptions">
-                        <li className={(filter === '') ? 'selected' : 'unselected'}
-                            onClick={() => { setFilter('') }}>All</li>
-                        <li className={filter === ('Python') ? 'selected' : 'unselected'}
-                            onClick={toggleFilter}>Python</li>
-                        <li className={filter === ('Javascript') ? 'selected' : 'unselected'}
-                            onClick={toggleFilter}>Javascript</li>
-                        <li className={filter === ('React') ? 'selected' : 'unselected'}
-                            onClick={toggleFilter}>React</li>
-                        <li className={filter === ('Redux') ? 'selected' : 'unselected'}
-                            onClick={toggleFilter}>Redux</li>
-                        <li className={filter === ('Flask') ? 'selected' : 'unselected'}
-                            onClick={toggleFilter}>Flask</li>
-                        <li className={filter === ('MongoDB') ? 'selected' : 'unselected'}
-                            onClick={toggleFilter}>MongoDB</li>
-                        <li className={filter === ('SQL') ? 'selected' : 'unselected'}
-                            onClick={toggleFilter}>SQL</li>
-                    </ul>
-                </div>
-
+                <ul className="filterOptions">
+                    <li style={{ color: "gray" }}>Filter:</li>
+                    <li className={(filter === '') ? 'selected' : 'unselected'}
+                        onClick={() => { setFilter('') }}>All</li>
+                    <li className={filter === ('Python') ? 'selected' : 'unselected'}
+                        onClick={toggleFilter}>Python</li>
+                    <li className={filter === ('Javascript') ? 'selected' : 'unselected'}
+                        onClick={toggleFilter}>Javascript</li>
+                    <li className={filter === ('React') ? 'selected' : 'unselected'}
+                        onClick={toggleFilter}>React</li>
+                    <li className={filter === ('Redux') ? 'selected' : 'unselected'}
+                        onClick={toggleFilter}>Redux</li>
+                    <li className={filter === ('Flask') ? 'selected' : 'unselected'}
+                        onClick={toggleFilter}>Flask</li>
+                    <li className={filter === ('MongoDB') ? 'selected' : 'unselected'}
+                        onClick={toggleFilter}>MongoDB</li>
+                    <li className={filter === ('SQL') ? 'selected' : 'unselected'}
+                        onClick={toggleFilter}>SQL</li>
+                </ul>
             </div>
             <div className="slideUp" ref={listRef} key={filter}>
             {
