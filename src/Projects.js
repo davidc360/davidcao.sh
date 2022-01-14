@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState, useReducer, useRef } from 'react'
 import './Projects.sass'
 import ImageGallery from 'react-image-gallery';
 import light from './img/light.jpg'
@@ -7,6 +7,8 @@ import light2 from './img/light2.jpg'
 export default function Projects() {
     const [numProjects, setNumProjects] = useState(3)
     const [filters, setFilters] = useState(new Set())
+    const listRef = useRef()
+
     const addProjects = () => {
         setNumProjects(num => num + 2)
     }
@@ -46,6 +48,7 @@ export default function Projects() {
                 </div>
 
             </div>
+            <div className="slideUp" ref={listRef} key={Math.random()}>
             {
                 projects.slice(0, numProjects).filter(project => {
                     if (filters.size == 0) return true
@@ -56,6 +59,7 @@ export default function Projects() {
                     })
                 })
             }
+            </div>
             {
                 numProjects < projects.length &&
                 <div className="loadMore" onClick={addProjects}>Load More</div>
