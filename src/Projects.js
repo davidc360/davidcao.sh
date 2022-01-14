@@ -19,22 +19,22 @@ import slashToSearch from './img/slash-to-search.jpg'
 
 export default function Projects() {
     const [numProjects, setNumProjects] = useState(3)
+    const [filter, setFilter] = useState('')
     const [filters, setFilters] = useState(new Set())
     const listRef = useRef()
+    const availableProjects = projects.filter(project =>
+        project.props.tags.some(tag => 
+            filter === '' || filter === tag
+    ))
 
     const addProjects = () => {
         setNumProjects(num => num + 2)
     }
     function toggleFilter(e) {
         const filter = e.target.textContent
-        setFilters(filters => {
-            const newFilters = new Set(filters)
-            if (filters.has(filter)) {
-                newFilters.delete(filter)
-            } else {
-                newFilters.add(filter)
-            }
-            return newFilters
+        setFilter(() => {
+            setNumProjects(3)
+            return filter
         })
     }
 
@@ -45,36 +45,33 @@ export default function Projects() {
                 <div className="filter">
                     <span style={{ color: "gray" }}>Filter:</span>
                     <ul className="filterOptions">
-                        <li className={(filters.size === 5 || filters.size === 0) ? 'selected' : 'unselected'}
-                            onClick={() => {setFilters(new Set())}}>All</li>
-                        <li className={filters.has('Python') ? 'selected' : 'unselected'}
+                        <li className={(filter === '') ? 'selected' : 'unselected'}
+                            onClick={() => { setFilter('') }}>All</li>
+                        <li className={filter === ('Python') ? 'selected' : 'unselected'}
                             onClick={toggleFilter}>Python</li>
-                        <li className={filters.has('Javascript') ? 'selected' : 'unselected'}
+                        <li className={filter === ('Javascript') ? 'selected' : 'unselected'}
                             onClick={toggleFilter}>Javascript</li>
-                        <li className={filters.has('React') ? 'selected' : 'unselected'}
+                        <li className={filter === ('React') ? 'selected' : 'unselected'}
                             onClick={toggleFilter}>React</li>
-                        <li className={filters.has('Redux') ? 'selected' : 'unselected'}
+                        <li className={filter === ('Redux') ? 'selected' : 'unselected'}
                             onClick={toggleFilter}>Redux</li>
-                        <li className={filters.has('Flask') ? 'selected' : 'unselected'}
+                        <li className={filter === ('Flask') ? 'selected' : 'unselected'}
                             onClick={toggleFilter}>Flask</li>
+                        <li className={filter === ('MongoDB') ? 'selected' : 'unselected'}
+                            onClick={toggleFilter}>MongoDB</li>
+                        <li className={filter === ('SQL') ? 'selected' : 'unselected'}
+                            onClick={toggleFilter}>SQL</li>
                     </ul>
                 </div>
 
             </div>
-            <div className="slideUp" ref={listRef} key={filters.size}>
+            <div className="slideUp" ref={listRef} key={filter}>
             {
-                projects.slice(0, numProjects).filter(project => {
-                    if (filters.size == 0) return true
-                    return project.props.tags.some(tag => {
-                        if (filters.has(tag)) {
-                            return true
-                        }
-                    })
-                })
+                availableProjects.slice(0, numProjects)
             }
             </div>
             {
-                numProjects < projects.length &&
+                numProjects < availableProjects.length &&
                 <div className="loadMore" onClick={addProjects}>Load More</div>
             }
         </div>
@@ -116,7 +113,7 @@ const projects = [
     <Project
         title="FastKeys.io"
         key="FastKeys.io"
-        tags={['Python', 'Flask', 'Javascript', 'React', 'Redux']}
+        tags={['Python', 'Flask', 'Javascript', 'React', 'Redux', 'MongoDB']}
         description={(
             <>
             <p>
@@ -201,7 +198,7 @@ const projects = [
     <Project
         title="Tech Prep"
         key="Tech Prep"
-        tags={['Python', 'Flask', 'React', 'Javascript', 'MongoDB']}
+        tags={['Python', 'Flask', 'Javascript', 'SQL']}
         description={(
             <>
             <p>
