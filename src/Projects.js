@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Projects.sass'
 import ImageGallery from 'react-image-gallery';
 import light from './img/light.jpg'
 import light2 from './img/light2.jpg'
 
 export default function Projects() {
+    const [numProjects, setNumProjects] = useState(3)
+    const addProjects = () => {
+        setNumProjects(num => num + 2)
+    }
+
     return (
         <div className="projectsCtn">
             <div className="heading">~/Projects/</div>
-            {projects}
-            <div className="loadMore">Load More</div>
+            {
+                projects.slice(0, numProjects)
+            }
+            {
+                numProjects < projects.length &&
+                <div className="loadMore" onClick={addProjects}>Load More</div>
+            }
         </div>
     )
 }
@@ -153,10 +163,14 @@ const projects = [
         description={(
             <>
             <p>
-                Slash to Search is a full-stack web application that allows users to search for
-                a specific movie or TV show and then view the results.
+                Slash to Search is a Chrome extension that allows users to
+                focus on the search bar on any page by pressing the slash key.
             </p>
             <br />
+            <p>
+                This feature comes by default in many websites but not all, so I
+                built this extension to make it available to all websites.
+            </p>
             </>
         )}
     />
