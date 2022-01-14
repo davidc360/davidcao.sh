@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import './Projects.sass'
 import ImageGallery from 'react-image-gallery';
 import light from './img/light.jpg'
@@ -23,7 +23,6 @@ export default function Projects() {
         })
     }
 
-    console.log(filters)
     return (
         <div className="projectsCtn">
             <div className="heading">~/Projects/</div>
@@ -31,7 +30,8 @@ export default function Projects() {
                 <div className="filter">
                     <span style={{ color: "gray" }}>Filter:</span>
                     <ul className="filterOptions">
-                        <li className={(filters.size === 5 || filters.size === 0) ? 'selected' : 'unselected'}>All</li>
+                        <li className={(filters.size === 5 || filters.size === 0) ? 'selected' : 'unselected'}
+                            onClick={() => {setFilters(new Set())}}>All</li>
                         <li className={filters.has('Python') ? 'selected' : 'unselected'}
                             onClick={toggleFilter}>Python</li>
                         <li className={filters.has('Javascript') ? 'selected' : 'unselected'}
@@ -47,7 +47,14 @@ export default function Projects() {
 
             </div>
             {
-                projects.slice(0, numProjects)
+                projects.slice(0, numProjects).filter(project => {
+                    if (filters.size == 0) return true
+                    return project.props.tags.some(tag => {
+                        if (filters.has(tag)) {
+                            return true
+                        }
+                    })
+                })
             }
             {
                 numProjects < projects.length &&
@@ -92,6 +99,7 @@ const projects = [
     <Project
         title="FastKeys.io"
         key="FastKeys.io"
+        tags={['Python', 'Flask', 'Javascript', 'React', 'Redux']}
         description={(
             <>
             <p>
@@ -120,6 +128,7 @@ const projects = [
     <Project
         title="Popular Tickers"
         key="Popular Tickers"
+        tags={['Python', 'Flask', 'Javascript', 'React', 'MongoDB']}
         description={(
             <>
             <p> Popular Tickers is a full-stack web application that monitors retail trading interest in the stock market based on sentiment on social media platform Reddit. </p>
@@ -144,6 +153,7 @@ const projects = [
     <Project
         title="5moves.xyz"
         key="5moves.xyz"
+        tags={['Python', 'Flask', 'Javascript', 'React', 'MongoDB']}
         description={(
             <>
             <p>
@@ -170,6 +180,7 @@ const projects = [
     <Project
         title="Tech Prep"
         key="Tech Prep"
+        tags={['Python', 'Flask', 'React', 'Javascript', 'MongoDB']}
         description={(
             <>
             <p>
@@ -192,6 +203,7 @@ const projects = [
     <Project
         title="Slash to Search"
         key="Slash to Search"
+        tags={['Javascript']}
         link="https://davidcao.sh/slash-to-search/"
         description={(
             <>
