@@ -5,6 +5,33 @@
     @media only screen and (min-width: 700px)
         display: flex
 
+.filterCtn
+    margin-bottom: 1em
+
+.filterOptions
+    display: inline-block
+    list-style-type: none
+    padding-left: 0
+    margin-top: -0.5em
+
+    li
+        padding: 0 0.3em
+        display: inline-block
+
+
+.selected
+    color: black
+    text-decoration: underline
+    &:hover
+        cursor: pointer
+        color: lighten(black, 35%)
+
+.unselected
+    color: gray
+    &:hover
+        cursor: pointer
+        color: lighten(gray, 10%)
+
 .projectTitle
     font-size: 1.3em
     font-weight: bold
@@ -64,11 +91,3 @@
         background-color: lightgray
         box-shadow: 0 0 0 4px #4b95eb
 
-@keyframes slideUp
-    0% 
-        opacity: 0
-        transform: translateY(0.8em)
-    
-    100% 
-        opacity: 1
-        transform: translateY(0)

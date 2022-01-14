@@ -6,13 +6,46 @@ import light2 from './img/light2.jpg'
 
 export default function Projects() {
     const [numProjects, setNumProjects] = useState(3)
+    const [filters, setFilters] = useState(new Set())
     const addProjects = () => {
         setNumProjects(num => num + 2)
     }
+    function toggleFilter(e) {
+        const filter = e.target.textContent
+        setFilters(filters => {
+            const newFilters = new Set(filters)
+            if (filters.has(filter)) {
+                newFilters.delete(filter)
+            } else {
+                newFilters.add(filter)
+            }
+            return newFilters
+        })
+    }
 
+    console.log(filters)
     return (
         <div className="projectsCtn">
             <div className="heading">~/Projects/</div>
+            <div className="filterCtn">
+                <div className="filter">
+                    <span style={{ color: "gray" }}>Filter:</span>
+                    <ul className="filterOptions">
+                        <li className={(filters.size === 5 || filters.size === 0) ? 'selected' : 'unselected'}>All</li>
+                        <li className={filters.has('Python') ? 'selected' : 'unselected'}
+                            onClick={toggleFilter}>Python</li>
+                        <li className={filters.has('Javascript') ? 'selected' : 'unselected'}
+                            onClick={toggleFilter}>Javascript</li>
+                        <li className={filters.has('React') ? 'selected' : 'unselected'}
+                            onClick={toggleFilter}>React</li>
+                        <li className={filters.has('Redux') ? 'selected' : 'unselected'}
+                            onClick={toggleFilter}>Redux</li>
+                        <li className={filters.has('Flask') ? 'selected' : 'unselected'}
+                            onClick={toggleFilter}>Flask</li>
+                    </ul>
+                </div>
+
+            </div>
             {
                 projects.slice(0, numProjects)
             }
