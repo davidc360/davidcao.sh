@@ -1,8 +1,21 @@
 import React, { useState, useReducer, useRef } from 'react'
 import './Projects.sass'
 import ImageGallery from 'react-image-gallery';
-import light from './img/light.jpg'
-import light2 from './img/light2.jpg'
+import fiveMovesGame from './img/5moves-game.jpg'
+import fiveMovesChallenge from './img/5moves-challenge.jpg'
+import fiveMovesHome from './img/5moves-home.jpg'
+import fastkeys from './img/fastkeys.jpg'
+import fastkeysDark from './img/fastkeys-dark.jpg'
+import fastkeysStats from './img/fastkeys-stats.jpg'
+import fastkeysDarkStats from './img/fastkeys-stats-dark.jpg'
+import popularTickers from './img/populartickers-main.jpg'
+import popularTickersPosts from './img/populartickers-posts.jpg'
+import popularTickersStats from './img/populartickers-stats.jpg'
+import techPrepLogin from './img/tech-prep-login.jpg'
+import techPrepPost from './img/tech-prep-post.jpg'
+import techPrepPosts from './img/tech-prep-posts.jpg'
+import techPrepResources from './img/tech-prep-resources.jpg'
+import slashToSearch from './img/slash-to-search.jpg'
 
 export default function Projects() {
     const [numProjects, setNumProjects] = useState(3)
@@ -48,7 +61,7 @@ export default function Projects() {
                 </div>
 
             </div>
-            <div className="slideUp" ref={listRef} key={Math.random()}>
+            <div className="slideUp" ref={listRef} key={filters.size}>
             {
                 projects.slice(0, numProjects).filter(project => {
                     if (filters.size == 0) return true
@@ -124,8 +137,10 @@ const projects = [
         )}
         link="https://fastkeys.io"
         images={[
-            { original: light },
-            { original: light2 }
+            { original: fastkeys },
+            { original: fastkeysDark },
+            { original: fastkeysStats },
+            { original: fastkeysDarkStats }
         ]}
     />
     ,
@@ -149,8 +164,9 @@ const projects = [
         )}
         link="https://populartickers.com"
         images={[
-            { original: light },
-            { original: light2 }
+            { original: popularTickersStats },
+            { original: popularTickersPosts },
+            { original: popularTickers },
         ]}
     />
     ,
@@ -176,8 +192,9 @@ const projects = [
         )}
         link="https://5moves.xyz"
         images={[
-            { original: light },
-            { original: light2 }
+            { original: fiveMovesChallenge },
+            { original: fiveMovesGame },
+            { original: fiveMovesHome },
         ]}
     />
     ,
@@ -199,8 +216,10 @@ const projects = [
         )}
         link="https://tech-prep.herokuapp.com"
         images={[
-            { original: light },
-            { original: light2 }
+            { original: techPrepPost },
+            { original: techPrepPosts },
+            { original: techPrepLogin },
+            { original: techPrepResources },
         ]}
     />
     ,
@@ -222,6 +241,9 @@ const projects = [
             </p>
             </>
         )}
+        images={[
+            { original: slashToSearch },
+        ]}
     />
                     
 ]
