@@ -5,8 +5,12 @@ import Projects from './Projects'
 import Contact from './Contact'
 import "react-image-gallery/styles/css/image-gallery.css";
 import resume from './resume.pdf'
+import fileDownload from 'js-file-download'
 
 function App() {
+    function downloadResume() {
+        fileDownload(resume, 'David_Cao_Resume.pdf')
+    }
     return (
         <div className="App">
             {window.location.pathname === '/resume' ? 
@@ -15,7 +19,7 @@ function App() {
                     <div className="resumeHeader">
                         <a className="resumeHeaderLink button" href="/">Homepage</a>
                         <a className="resumeHeaderLink button" href={resume}>View Resume</a>
-                        <a className="resumeHeaderLink button" href={resume} download="David_Cao_Resume.pdf">Download PDF</a>
+                        <a className="resumeHeaderLink button" onClick={downloadResume}>Download PDF</a>
                     </div>
                 </>
                 :
