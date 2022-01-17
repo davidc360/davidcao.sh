@@ -7,35 +7,20 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import resume from './resume.pdf'
 
 function App() {
+    if (window.location.pathname === '/resume') {
+        // window.location.href = resume
+        window.open(resume, '_self')
+    }
     return (
         <div className="App">
-            {window.location.pathname === '/resume' ? 
-                <>
-                    <div className="resumeHeader">
-                        <a className="resumeHeaderLink button" href="/">Homepage</a>
-                        <a className="resumeHeaderLink button" href={resume} download={true}>Download PDF</a>
-                    </div>
-                    {/* <embed src={resume} target="_blank" type="application/pdf" style={{ width: "100vw", height: "auto"}}/> */}
-                    <div className="resumePDF">
-                        <object data={resume} type="application/pdf" width="100%" height="100%">
-                            <p>Your web browser doesn't have a PDF plugin.
-                                <a href={resume} download={true}>click here to download the PDF file.</a>
-                            </p>
-                        </object>
-                    </div>
-                </>
-                :
-                <>
-                    <Greeting />
-                    <About />
-                    <Projects />
-                    <Contact />
-                    {/* footer */}
-                    <div className="footer">
-                        Designed and developed by David Cao ❤️
-                    </div>
-                </>
-            }
+            <Greeting />
+            <About />
+            <Projects />
+            <Contact />
+            {/* footer */}
+            <div className="footer">
+                Designed and developed by David Cao ❤️
+            </div>
         </div>
   )
 }
