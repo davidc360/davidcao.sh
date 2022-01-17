@@ -1,4 +1,3 @@
-import Axios from 'axios'
 import './App.sass'
 import Greeting from './Greeting'
 import About from './About'
@@ -6,17 +5,8 @@ import Projects from './Projects'
 import Contact from './Contact'
 import "react-image-gallery/styles/css/image-gallery.css";
 import resume from './resume.pdf'
-import fileDownload from 'js-file-download'
 
 function App() {
-    function downloadResume() {
-        const filename = 'David_Cao_Resume.pdf'
-        Axios.get(resume, {
-            responseType: 'arraybuffer',
-          }).then(res => {
-            fileDownload(res.data, filename);
-          })
-    }
     return (
         <div className="App">
             {window.location.pathname === '/resume' ? 
