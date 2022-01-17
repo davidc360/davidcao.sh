@@ -9,7 +9,7 @@ import resume from './resume.pdf'
 function App() {
     return (
         <div className="App">
-            {window.location.pathname === '/resume/' ? 
+            {window.location.pathname === '/resume' ? 
                 <>
                     <div className="resumeHeader">
                         <a className="resumeHeaderLink button" href="/">Homepage</a>
