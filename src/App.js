@@ -25,7 +25,7 @@ function App() {
                     <div className="resumeHeader">
                         <a className="resumeHeaderLink button" href="/">Homepage</a>
                         <a className="resumeHeaderLink button" href={resume}>View Resume</a>
-                        <a className="resumeHeaderLink button" onClick={downloadResume}>Download PDF</a>
+                        <a className="resumeHeaderLink button" href="https://www.dropbox.com/s/x3fmq1kilzjjlvx/David_Cao_Resume.pdf?dl=1" target="_blank">Download PDF</a>
                     </div>
                 </>
                 :
