@@ -11,7 +11,7 @@ const THINGS_I_DO = [
     "love Redux.",
 ]
 
-export default function Greeting() {
+export default function Greeting({ showSubText }) {
     const [subText, setSubText] = useState("")
     const [subTextChoice, setSubtextChoice] = useState(0)
     const subTextRef = useRef(subText)
@@ -86,10 +86,12 @@ export default function Greeting() {
     return (
         <div className="greetingCtn">
             <div className="introText">Hello, I'm David Cao.</div>
-            <div className="subCtn">
-                <span>I </span>  
-                <span className="subText">{subText}</span>
-            </div>
+            { showSubText &&
+                <div className="subCtn">
+                    <span>I </span>  
+                    <span className="subText">{subText}</span>
+                </div>
+            }
         </div>
     )
 }

@@ -7,20 +7,29 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import resume from './resume.pdf'
 
 function App() {
-    if (window.location.pathname === '/resume') {
-        // window.location.href = resume
-        window.open(resume, '_self')
-    }
     return (
         <div className="App">
-            <Greeting />
-            <About />
-            <Projects />
-            <Contact />
-            {/* footer */}
-            <div className="footer">
-                Designed and developed by David Cao ❤️
-            </div>
+            {window.location.pathname === '/resume' ? 
+                <>
+                    <Greeting />
+                    <div className="resumeHeader">
+                        <a className="resumeHeaderLink button" href="/">Homepage</a>
+                        <a className="resumeHeaderLink button" href={resume}>View Resume</a>
+                        <a className="resumeHeaderLink button" href={resume} download={true}>Download PDF</a>
+                    </div>
+                </>
+                :
+                <>
+                    <Greeting showSubText={true}/>
+                    <About />
+                    <Projects />
+                    <Contact />
+                    {/* footer */}
+                    <div className="footer">
+                        Designed and developed by David Cao ❤️
+                    </div>
+                </>
+            }
         </div>
   )
 }
