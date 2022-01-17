@@ -1,3 +1,4 @@
+import Axios from 'axios'
 import './App.sass'
 import Greeting from './Greeting'
 import About from './About'
@@ -9,7 +10,12 @@ import fileDownload from 'js-file-download'
 
 function App() {
     function downloadResume() {
-        fileDownload(resume, 'David_Cao_Resume.pdf')
+        const filename = 'David_Cao_Resume.pdf'
+        Axios.get(resume, {
+            responseType: 'arraybuffer',
+          }).then(res => {
+            fileDownload(res.data, filename);
+          })
     }
     return (
         <div className="App">
