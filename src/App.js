@@ -15,7 +15,14 @@ function App() {
                         <a className="resumeHeaderLink button" href="/">Homepage</a>
                         <a className="resumeHeaderLink button" href={resume} download={true}>Download PDF</a>
                     </div>
-                    <embed src={resume} target="_blank" type="application/pdf" style={{ width: "100vw", height: "100vh" }}/>
+                    {/* <embed src={resume} target="_blank" type="application/pdf" style={{ width: "100vw", height: "auto"}}/> */}
+                    <div className="resumePDF">
+                        <object data={resume} type="application/pdf" width="100%" height="100%">
+                            <p>Your web browser doesn't have a PDF plugin.
+                                <a href={resume} download={true}>click here to download the PDF file.</a>
+                            </p>
+                        </object>
+                    </div>
                 </>
                 :
                 <>
