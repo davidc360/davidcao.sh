@@ -19,9 +19,35 @@ html
     margin-bottom: 0.5rem
     // text-decoration: underline
 
+.button
+    text-align: center
+    padding: 0.2em 0.5em
+    box-shadow: 0 0 0 2px black
+    transition: box-shadow 0.1s ease-out
+    user-select: none
+
+    &:hover
+        cursor: pointer
+        color: inherit
+        box-shadow: 0 0 0 4px black
+
+    &:active
+        background-color: lightgray
+        box-shadow: 0 0 0 4px #4b95eb
+
 .footer 
     font-size: 0.8rem
     padding-top: 2.5rem
+
+.resumeHeader
+    margin-top: 0 !important
+    display: flex
+    justify-content: center
+
+.resumeHeaderLink
+    text-decoration: none
+    color: inherit
+    margin: 1rem 1rem
 
 br
     content: ""
