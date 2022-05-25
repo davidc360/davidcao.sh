@@ -18,6 +18,11 @@ function App() {
                         <a className="resumeHeaderLink button" href="https://www.dropbox.com/s/x3fmq1kilzjjlvx/David_Cao_Resume.pdf?dl=1" target="_blank">Download PDF</a>
                     </div>
                 </>
+                : window.location.pathname === '/daisy' ?
+                    <>
+                        <div>Why u open before Korea 😡</div>
+                        <div>📝</div>
+                    </>
                 :
                 <>
                     <Greeting showSubText={true}/>
